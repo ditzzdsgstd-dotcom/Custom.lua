@@ -1,85 +1,89 @@
-local TweenService = game:GetService("TweenService")
-local CoreGui = game:GetService("CoreGui")
+local ts = game:GetService("TweenService")
+local cg = game:GetService("CoreGui")
 
-pcall(function()
-	CoreGui:FindFirstChild("ExampleUI"):Destroy()
-end)
+pcall(function() cg:FindFirstChild("ExampleUI"):Destroy() end)
 
-local Gui = Instance.new("ScreenGui", CoreGui)
-Gui.Name = "eUI"
-Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling"
-Gui.ResetOnSpawn = false
+local gui = Instance.new("ScreenGui", cg)
+gui.Name = "ExampleUI"
+gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling"
+gui.ResetOnSpawn = false
 
-local Reopen = Instance.new("TextButton", Gui)
-Reopen.Size = UDim2.new(0, 40, 0, 40)
-Reopen.Position = UDim2.new(0, 20, 1, -60)
-Reopen.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
-Reopen.Text = "☰"
-Reopen.TextColor3 = Color3.fromRGB(255, 255, 255)
-Reopen.Font = Enum.Font.GothamBold
-Reopen.TextSize = 20
-Reopen.Visible = false
-Instance.new("UICorner", Reopen).CornerRadius = UDim.new(1, 0)
+local reopen = Instance.new("TextButton", gui)
+reopen.Size = UDim2.new(0, 40, 0, 40)
+reopen.Position = UDim2.new(0, 20, 1, -60)
+reopen.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+reopen.Text = "☰"
+reopen.TextColor3 = Color3.new(1,1,1)
+reopen.Font = Enum.Font.GothamBold
+reopen.TextSize = 20
+reopen.Visible = false
+Instance.new("UICorner", reopen).CornerRadius = UDim.new(1,0)
 
-local Main = Instance.new("Frame", Gui)
-Main.Size = UDim2.new(0, 720, 0, 420)
-Main.Position = UDim2.new(0.5, 0, 0.5, 20)
-Main.AnchorPoint = Vector2.new(0.5, 0.5)
-Main.BackgroundColor3 = Color3.fromRGB(26, 26, 32)
-Main.BackgroundTransparency = 1
-Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 12)
+local main = Instance.new("Frame", gui)
+main.Size = UDim2.new(0, 700, 0, 400)
+main.Position = UDim2.new(0.5, 0, 0.5, 20)
+main.AnchorPoint = Vector2.new(0.5, 0.5)
+main.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+main.BackgroundTransparency = 1
+Instance.new("UICorner", main).CornerRadius = UDim.new(0, 10)
 
-local Shadow = Instance.new("ImageLabel", Main)
-Shadow.Image = "rbxassetid://1316045217"
-Shadow.ImageTransparency = 1
-Shadow.ScaleType = Enum.ScaleType.Slice
-Shadow.SliceCenter = Rect.new(10, 10, 118, 118)
-Shadow.Size = UDim2.new(1, 60, 1, 60)
-Shadow.Position = UDim2.new(0, -30, 0, -30)
-Shadow.BackgroundTransparency = 1
-Shadow.ZIndex = -1
+local glow = Instance.new("UIStroke", main)
+glow.Thickness = 2
+glow.Color = Color3.fromRGB(0, 200, 255)
+glow.Transparency = 1
+glow.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 
-local Header = Instance.new("TextLabel", Main)
-Header.Text = "Example UI"
-Header.Font = Enum.Font.GothamBlack
-Header.TextSize = 20
-Header.TextColor3 = Color3.fromRGB(255, 255, 255)
-Header.BackgroundTransparency = 1
-Header.Size = UDim2.new(1, -20, 0, 40)
-Header.Position = UDim2.new(0, 15, 0, 10)
-Header.TextXAlignment = Enum.TextXAlignment.Left
+local shadow = Instance.new("ImageLabel", main)
+shadow.Image = "rbxassetid://1316045217"
+shadow.ImageTransparency = 1
+shadow.ScaleType = Enum.ScaleType.Slice
+shadow.SliceCenter = Rect.new(10,10,118,118)
+shadow.Size = UDim2.new(1,60,1,60)
+shadow.Position = UDim2.new(0,-30,0,-30)
+shadow.BackgroundTransparency = 1
+shadow.ZIndex = -1
 
-local Close = Instance.new("TextButton", Main)
-Close.Size = UDim2.new(0, 35, 0, 35)
-Close.Position = UDim2.new(1, -50, 0, 10)
-Close.BackgroundColor3 = Color3.fromRGB(55, 55, 65)
-Close.Text = "X"
-Close.TextColor3 = Color3.fromRGB(255, 255, 255)
-Close.Font = Enum.Font.GothamBold
-Close.TextSize = 18
-Instance.new("UICorner", Close).CornerRadius = UDim.new(1, 0)
+local title = Instance.new("TextLabel", main)
+title.Text = "Example UI"
+title.Font = Enum.Font.GothamBlack
+title.TextSize = 22
+title.TextColor3 = Color3.fromRGB(0,255,255)
+title.BackgroundTransparency = 1
+title.Size = UDim2.new(1,-20,0,40)
+title.Position = UDim2.new(0,15,0,10)
+title.TextXAlignment = Enum.TextXAlignment.Left
 
-local Sidebar = Instance.new("Frame", Main)
-Sidebar.Size = UDim2.new(0, 60, 1, -60)
-Sidebar.Position = UDim2.new(0, 0, 0, 60)
-Sidebar.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
-Instance.new("UICorner", Sidebar).CornerRadius = UDim.new(0, 10)
+local close = Instance.new("TextButton", main)
+close.Size = UDim2.new(0,35,0,35)
+close.Position = UDim2.new(1,-50,0,10)
+close.BackgroundColor3 = Color3.fromRGB(0,150,255)
+close.Text = "X"
+close.TextColor3 = Color3.new(1,1,1)
+close.Font = Enum.Font.GothamBold
+close.TextSize = 18
+Instance.new("UICorner", close).CornerRadius = UDim.new(1,0)
 
-TweenService:Create(Main, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-	BackgroundTransparency = 0,
-	Position = UDim2.new(0.5, 0, 0.5, 0)
+local tabs = Instance.new("Frame", main)
+tabs.Size = UDim2.new(0, 60, 1, -60)
+tabs.Position = UDim2.new(0, 0, 0, 60)
+tabs.BackgroundColor3 = Color3.fromRGB(15, 15, 20)
+Instance.new("UICorner", tabs).CornerRadius = UDim.new(0, 8)
+
+ts:Create(main, TweenInfo.new(0.4), {
+	BackgroundTransparency = 0
 }):Play()
-
-TweenService:Create(Shadow, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+ts:Create(shadow, TweenInfo.new(0.4), {
 	ImageTransparency = 0.4
 }):Play()
+ts:Create(glow, TweenInfo.new(0.5), {
+	Transparency = 0
+}):Play()
 
-Close.MouseButton1Click:Connect(function()
-	Main.Visible = false
-	Reopen.Visible = true
+close.MouseButton1Click:Connect(function()
+	main.Visible = false
+	reopen.Visible = true
 end)
-
-Reopen.MouseButton1Click:Connect(function()
-	Main.Visible = true
-	Reopen.Visible = false
+reopen.MouseButton1Click:Connect(function()
+	main.Visible = true
+	reopen.Visible = false
 end)
