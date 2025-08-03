@@ -3,11 +3,10 @@ local UIS = game:GetService("UserInputService")
 local LocalPlayer = Players.LocalPlayer
 
 -- UI Setup
-local ScreenGui = Instance.new("ScreenGui")
+local ScreenGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
 ScreenGui.Name = "YoxanXHubUI"
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
-ScreenGui.Parent = game:GetService("CoreGui")
 
 -- Responsive scale
 local scale = Instance.new("UIScale", ScreenGui)
@@ -17,12 +16,24 @@ scale.Scale = 1
 local Main = Instance.new("Frame", ScreenGui)
 Main.Name = "MainFrame"
 Main.Size = UDim2.new(0, 750, 0, 450)
-Main.Position = UDim2.new(0.5, -375, 0.5, -225)
+Main.Position = UDim2.new(0.5, 0, 0.5, 0)
 Main.AnchorPoint = Vector2.new(0.5, 0.5)
 Main.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
-Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 10)
+Main.BorderSizePixel = 0
 
--- Dragging
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 10)
+local stroke = Instance.new("UIStroke", Main)
+stroke.Color = Color3.fromRGB(60, 60, 70)
+stroke.Thickness = 1.5
+stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+local gradient = Instance.new("UIGradient", Main)
+gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(35,35,40)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(25,25,28))
+}
+
+-- Dragging Support
 local dragging, dragInput, dragStart, startPos
 Main.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
@@ -63,11 +74,30 @@ CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 CloseBtn.Font = Enum.Font.GothamBold
 CloseBtn.TextSize = 18
 Instance.new("UICorner", CloseBtn).CornerRadius = UDim.new(1, 0)
+
+-- Reopen Icon (Hidden by default)
+local ReopenBtn = Instance.new("TextButton", ScreenGui)
+ReopenBtn.Size = UDim2.new(0, 40, 0, 40)
+ReopenBtn.Position = UDim2.new(0, 15, 1, -55)
+ReopenBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 60)
+ReopenBtn.Text = "☰"
+ReopenBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+ReopenBtn.Font = Enum.Font.GothamBold
+ReopenBtn.TextSize = 22
+Instance.new("UICorner", ReopenBtn).CornerRadius = UDim.new(1, 0)
+ReopenBtn.Visible = false
+
 CloseBtn.MouseButton1Click:Connect(function()
-    ScreenGui.Enabled = false
+    Main.Visible = false
+    ReopenBtn.Visible = true
 end)
 
--- Username Display
+ReopenBtn.MouseButton1Click:Connect(function()
+    Main.Visible = true
+    ReopenBtn.Visible = false
+end)
+
+-- Username
 local Username = Instance.new("TextLabel", TopBar)
 Username.Text = "Hello, " .. LocalPlayer.Name
 Username.Font = Enum.Font.GothamBold
@@ -110,7 +140,7 @@ for i, icon in ipairs(icons) do
     Button.BackgroundTransparency = 1
 end
 
--- Main Content Area
+-- Content Area
 local Content = Instance.new("Frame", Main)
 Content.Name = "Content"
 Content.Size = UDim2.new(1, -60, 1, -50)
@@ -118,7 +148,7 @@ Content.Position = UDim2.new(0, 60, 0, 50)
 Content.BackgroundColor3 = Color3.fromRGB(35, 35, 40)
 Instance.new("UICorner", Content).CornerRadius = UDim.new(0, 8)
 
--- Example Welcome Panel
+-- Welcome Panel
 local Card = Instance.new("Frame", Content)
 Card.Size = UDim2.new(0, 220, 0, 100)
 Card.Position = UDim2.new(0, 20, 0, 20)
