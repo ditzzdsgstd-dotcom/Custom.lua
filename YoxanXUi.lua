@@ -2,36 +2,33 @@ local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
 
 pcall(function()
-    CoreGui:FindFirstChild("ExampleUI"):Destroy()
+	CoreGui:FindFirstChild("ExampleUI"):Destroy()
 end)
 
 local Gui = Instance.new("ScreenGui", CoreGui)
 Gui.Name = "ExampleUI"
+Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling"
 Gui.ResetOnSpawn = false
-Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
--- Reopen button
 local Reopen = Instance.new("TextButton", Gui)
 Reopen.Size = UDim2.new(0, 40, 0, 40)
 Reopen.Position = UDim2.new(0, 20, 1, -60)
-Reopen.BackgroundColor3 = Color3.fromRGB(50, 50, 60)
+Reopen.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
 Reopen.Text = "☰"
 Reopen.TextColor3 = Color3.fromRGB(255, 255, 255)
-Reopen.TextSize = 20
 Reopen.Font = Enum.Font.GothamBold
+Reopen.TextSize = 20
 Reopen.Visible = false
 Instance.new("UICorner", Reopen).CornerRadius = UDim.new(1, 0)
 
--- Main UI
 local Main = Instance.new("Frame", Gui)
 Main.Size = UDim2.new(0, 720, 0, 420)
 Main.Position = UDim2.new(0.5, 0, 0.5, 20)
 Main.AnchorPoint = Vector2.new(0.5, 0.5)
-Main.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
+Main.BackgroundColor3 = Color3.fromRGB(26, 26, 32)
 Main.BackgroundTransparency = 1
 Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 12)
 
--- Shadow
 local Shadow = Instance.new("ImageLabel", Main)
 Shadow.Image = "rbxassetid://1316045217"
 Shadow.ImageTransparency = 1
@@ -42,7 +39,6 @@ Shadow.Position = UDim2.new(0, -30, 0, -30)
 Shadow.BackgroundTransparency = 1
 Shadow.ZIndex = -1
 
--- Header
 local Header = Instance.new("TextLabel", Main)
 Header.Text = "Example UI"
 Header.Font = Enum.Font.GothamBlack
@@ -53,7 +49,6 @@ Header.Size = UDim2.new(1, -20, 0, 40)
 Header.Position = UDim2.new(0, 15, 0, 10)
 Header.TextXAlignment = Enum.TextXAlignment.Left
 
--- Close Button
 local Close = Instance.new("TextButton", Main)
 Close.Size = UDim2.new(0, 35, 0, 35)
 Close.Position = UDim2.new(1, -50, 0, 10)
@@ -64,30 +59,27 @@ Close.Font = Enum.Font.GothamBold
 Close.TextSize = 18
 Instance.new("UICorner", Close).CornerRadius = UDim.new(1, 0)
 
--- Sidebar placeholder (for Part 2/5)
 local Sidebar = Instance.new("Frame", Main)
 Sidebar.Size = UDim2.new(0, 60, 1, -60)
 Sidebar.Position = UDim2.new(0, 0, 0, 60)
 Sidebar.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
 Instance.new("UICorner", Sidebar).CornerRadius = UDim.new(0, 10)
 
--- Animation
 TweenService:Create(Main, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-    BackgroundTransparency = 0,
-    Position = UDim2.new(0.5, 0, 0.5, 0)
+	BackgroundTransparency = 0,
+	Position = UDim2.new(0.5, 0, 0.5, 0)
 }):Play()
 
 TweenService:Create(Shadow, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-    ImageTransparency = 0.4
+	ImageTransparency = 0.4
 }):Play()
 
--- Hide / Show logic
 Close.MouseButton1Click:Connect(function()
-    Main.Visible = false
-    Reopen.Visible = true
+	Main.Visible = false
+	Reopen.Visible = true
 end)
 
 Reopen.MouseButton1Click:Connect(function()
-    Main.Visible = true
-    Reopen.Visible = false
+	Main.Visible = true
+	Reopen.Visible = false
 end)
