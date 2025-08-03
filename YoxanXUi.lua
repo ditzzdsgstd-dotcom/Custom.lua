@@ -1,597 +1,639 @@
--- Cracked Version By Crucifix (it's an require script)
--- Gui to Lua
--- Version: 3.3
+local allowedPlaceIds = {
+    [96342491571673] = true, -- New Players Server
+    [109983668079237] = true -- Normal
+}
 
--- Instances:
-
-local ScreenGui = Instance.new("ScreenGui")
-local ScrollingFrame = Instance.new("ScrollingFrame")
-local Title = Instance.new("TextLabel")
-local Oldc00l = Instance.new("TextButton")
-local k00p = Instance.new("TextButton")
-local Playmusic = Instance.new("TextButton")
-local hint = Instance.new("TextButton")
-local _666 = Instance.new("TextButton")
-local Unanchor = Instance.new("TextButton")
-local Shutdown = Instance.new("TextButton")
-local disco = Instance.new("TextButton")
-local k00pcity = Instance.new("TextButton")
-local jumpscare = Instance.new("TextButton")
-local stopmusic = Instance.new("TextButton")
-local destroy = Instance.new("TextButton")
-local ss1 = Instance.new("TextButton")
-local ss2 = Instance.new("TextButton")
-local ss3 = Instance.new("TextButton")
-local funnisound = Instance.new("TextButton")
-local CallofdutyWW2 = Instance.new("TextButton")
-local ss4 = Instance.new("TextButton")
-local Theyneedtodie = Instance.new("TextButton")
-local Oldk00p = Instance.new("TextButton")
-local TextLabel = Instance.new("TextLabel")
-local ImageLabel = Instance.new("ImageLabel")
-local Kreekcraftfeet = Instance.new("TextButton")
-local Andres = Instance.new("TextButton")
-
---Properties:
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-ScrollingFrame.Parent = ScreenGui
-ScrollingFrame.Active = true
-ScrollingFrame.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 89, 29)
-ScrollingFrame.BorderSizePixel = 3
-ScrollingFrame.Position = UDim2.new(0.0309806578, 0, 0.0359025598, 0)
-ScrollingFrame.Size = UDim2.new(0, 639, 0, 307)
-
-Title.Name = "Title"
-Title.Parent = ScrollingFrame
-Title.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
-Title.BorderColor3 = Color3.fromRGB(12, 53, 6)
-Title.BorderSizePixel = 0
-Title.Position = UDim2.new(0.0859276503, 0, -0.000716221984, 0)
-Title.Size = UDim2.new(0, 480, 0, 50)
-Title.Font = Enum.Font.SourceSans
-Title.Text = "k00pgui V6"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextScaled = true
-Title.TextSize = 40.000
-Title.TextWrapped = true
-
-Oldc00l.Name = "Oldc00l"
-Oldc00l.Parent = Title
-Oldc00l.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Oldc00l.BorderColor3 = Color3.fromRGB(5, 54, 0)
-Oldc00l.BorderSizePixel = 2
-Oldc00l.Position = UDim2.new(0.322483629, 0, 9.3745451, 0)
-Oldc00l.Size = UDim2.new(0, 147, 0, 47)
-Oldc00l.Font = Enum.Font.SourceSans
-Oldc00l.Text = "Old c00lkidd Decal"
-Oldc00l.TextColor3 = Color3.fromRGB(255, 255, 255)
-Oldc00l.TextScaled = true
-Oldc00l.TextSize = 14.000
-Oldc00l.TextWrapped = true
-
-k00p.Name = "k00p"
-k00p.Parent = Title
-k00p.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-k00p.BorderColor3 = Color3.fromRGB(5, 54, 0)
-k00p.BorderSizePixel = 2
-k00p.Position = UDim2.new(-0.0170997158, 0, 0.97454536, 0)
-k00p.Size = UDim2.new(0, 147, 0, 47)
-k00p.Font = Enum.Font.SourceSans
-k00p.Text = "k00p"
-k00p.TextColor3 = Color3.fromRGB(255, 255, 255)
-k00p.TextScaled = true
-k00p.TextSize = 14.000
-k00p.TextWrapped = true
-
-Playmusic.Name = "Playmusic"
-Playmusic.Parent = Title
-Playmusic.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Playmusic.BorderColor3 = Color3.fromRGB(5, 54, 0)
-Playmusic.BorderSizePixel = 2
-Playmusic.Position = UDim2.new(0.32456696, 0, 0.97454536, 0)
-Playmusic.Size = UDim2.new(0, 147, 0, 47)
-Playmusic.Font = Enum.Font.SourceSans
-Playmusic.Text = "Play Music"
-Playmusic.TextColor3 = Color3.fromRGB(255, 255, 255)
-Playmusic.TextScaled = true
-Playmusic.TextSize = 14.000
-Playmusic.TextWrapped = true
-
-hint.Name = "hint"
-hint.Parent = Title
-hint.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-hint.BorderColor3 = Color3.fromRGB(5, 54, 0)
-hint.BorderSizePixel = 2
-hint.Position = UDim2.new(0.66831696, 0, 0.9945454, 0)
-hint.Size = UDim2.new(0, 147, 0, 47)
-hint.Font = Enum.Font.SourceSans
-hint.Text = "Hint"
-hint.TextColor3 = Color3.fromRGB(255, 255, 255)
-hint.TextScaled = true
-hint.TextSize = 14.000
-hint.TextWrapped = true
-
-_666.Name = "666"
-_666.Parent = Title
-_666.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-_666.BorderColor3 = Color3.fromRGB(5, 54, 0)
-_666.BorderSizePixel = 2
-_666.Position = UDim2.new(-0.0191830192, 0, 2.59454536, 0)
-_666.Size = UDim2.new(0, 147, 0, 47)
-_666.Font = Enum.Font.SourceSans
-_666.Text = "666"
-_666.TextColor3 = Color3.fromRGB(255, 255, 255)
-_666.TextScaled = true
-_666.TextSize = 14.000
-_666.TextWrapped = true
-
-Unanchor.Name = "Unanchor"
-Unanchor.Parent = Title
-Unanchor.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Unanchor.BorderColor3 = Color3.fromRGB(5, 54, 0)
-Unanchor.BorderSizePixel = 2
-Unanchor.Position = UDim2.new(0.322483659, 0, 2.59454536, 0)
-Unanchor.Size = UDim2.new(0, 147, 0, 47)
-Unanchor.Font = Enum.Font.SourceSans
-Unanchor.Text = "UnAnchor Parts"
-Unanchor.TextColor3 = Color3.fromRGB(255, 255, 255)
-Unanchor.TextScaled = true
-Unanchor.TextSize = 14.000
-Unanchor.TextWrapped = true
-
-Shutdown.Name = "Shutdown"
-Shutdown.Parent = Title
-Shutdown.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Shutdown.BorderColor3 = Color3.fromRGB(5, 54, 0)
-Shutdown.BorderSizePixel = 2
-Shutdown.Position = UDim2.new(0.999567032, 0, 1.79454565, 0)
-Shutdown.Size = UDim2.new(0, 81, 0, 429)
-Shutdown.Font = Enum.Font.SourceSans
-Shutdown.Text = "Shutdown to scare lil mfs"
-Shutdown.TextColor3 = Color3.fromRGB(255, 255, 255)
-Shutdown.TextScaled = true
-Shutdown.TextSize = 14.000
-Shutdown.TextWrapped = true
-
-disco.Name = "disco"
-disco.Parent = Title
-disco.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-disco.BorderColor3 = Color3.fromRGB(5, 54, 0)
-disco.BorderSizePixel = 2
-disco.Position = UDim2.new(-0.00043301098, 0, 3.9545455, 0)
-disco.Size = UDim2.new(0, 147, 0, 47)
-disco.Font = Enum.Font.SourceSans
-disco.Text = "Disco"
-disco.TextColor3 = Color3.fromRGB(255, 255, 255)
-disco.TextScaled = true
-disco.TextSize = 14.000
-disco.TextWrapped = true
-
-k00pcity.Name = "k00pcity"
-k00pcity.Parent = Title
-k00pcity.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-k00pcity.BorderColor3 = Color3.fromRGB(5, 54, 0)
-k00pcity.BorderSizePixel = 2
-k00pcity.Position = UDim2.new(0.326650321, 0, 3.9545455, 0)
-k00pcity.Size = UDim2.new(0, 147, 0, 47)
-k00pcity.Font = Enum.Font.SourceSans
-k00pcity.Text = "k00pcity"
-k00pcity.TextColor3 = Color3.fromRGB(255, 255, 255)
-k00pcity.TextScaled = true
-k00pcity.TextSize = 14.000
-k00pcity.TextWrapped = true
-
-jumpscare.Name = "jumpscare"
-jumpscare.Parent = Title
-jumpscare.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-jumpscare.BorderColor3 = Color3.fromRGB(5, 54, 0)
-jumpscare.BorderSizePixel = 2
-jumpscare.Position = UDim2.new(0.659983635, 0, 3.9545455, 0)
-jumpscare.Size = UDim2.new(0, 147, 0, 47)
-jumpscare.Font = Enum.Font.SourceSans
-jumpscare.Text = "Jumpscare FE"
-jumpscare.TextColor3 = Color3.fromRGB(255, 255, 255)
-jumpscare.TextScaled = true
-jumpscare.TextSize = 14.000
-jumpscare.TextWrapped = true
-
-stopmusic.Name = "stopmusic"
-stopmusic.Parent = Title
-stopmusic.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-stopmusic.BorderColor3 = Color3.fromRGB(5, 54, 0)
-stopmusic.BorderSizePixel = 2
-stopmusic.Position = UDim2.new(-0.115016431, 0, 0.854545295, 0)
-stopmusic.Size = UDim2.new(0, 47, 0, 474)
-stopmusic.Font = Enum.Font.SourceSans
-stopmusic.Text = "Stop Music"
-stopmusic.TextColor3 = Color3.fromRGB(255, 255, 255)
-stopmusic.TextScaled = true
-stopmusic.TextSize = 40.000
-stopmusic.TextWrapped = true
-
-destroy.Name = "destroy"
-destroy.Parent = Title
-destroy.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-destroy.BorderColor3 = Color3.fromRGB(5, 54, 0)
-destroy.BorderSizePixel = 2
-destroy.Position = UDim2.new(-0.017099699, 0, 5.31454563, 0)
-destroy.Size = UDim2.new(0, 476, 0, 47)
-destroy.Font = Enum.Font.SourceSans
-destroy.Text = "Destroy Complete (rip script its beamed)"
-destroy.TextColor3 = Color3.fromRGB(255, 255, 255)
-destroy.TextScaled = true
-destroy.TextSize = 14.000
-destroy.TextWrapped = true
-
-ss1.Name = "ss1"
-ss1.Parent = Title
-ss1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ss1.BorderColor3 = Color3.fromRGB(5, 54, 0)
-ss1.BorderSizePixel = 2
-ss1.Position = UDim2.new(-0.0170996785, 0, 6.69454575, 0)
-ss1.Size = UDim2.new(0, 147, 0, 47)
-ss1.Font = Enum.Font.SourceSans
-ss1.Text = "c00lgui"
-ss1.TextColor3 = Color3.fromRGB(255, 255, 255)
-ss1.TextScaled = true
-ss1.TextSize = 14.000
-ss1.TextWrapped = true
-
-ss2.Name = "ss2"
-ss2.Parent = Title
-ss2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ss2.BorderColor3 = Color3.fromRGB(5, 54, 0)
-ss2.BorderSizePixel = 2
-ss2.Position = UDim2.new(0.322483659, 0, 6.69454575, 0)
-ss2.Size = UDim2.new(0, 147, 0, 47)
-ss2.Font = Enum.Font.SourceSans
-ss2.Text = "game cursor gui"
-ss2.TextColor3 = Color3.fromRGB(255, 255, 255)
-ss2.TextScaled = true
-ss2.TextSize = 14.000
-ss2.TextWrapped = true
-
-ss3.Name = "ss3"
-ss3.Parent = Title
-ss3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ss3.BorderColor3 = Color3.fromRGB(5, 54, 0)
-ss3.BorderSizePixel = 2
-ss3.Position = UDim2.new(0.664150357, 0, 6.69454575, 0)
-ss3.Size = UDim2.new(0, 147, 0, 47)
-ss3.Font = Enum.Font.SourceSans
-ss3.Text = "BYTEGUI"
-ss3.TextColor3 = Color3.fromRGB(255, 255, 255)
-ss3.TextScaled = true
-ss3.TextSize = 14.000
-ss3.TextWrapped = true
-
-funnisound.Name = "funnisound"
-funnisound.Parent = Title
-funnisound.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-funnisound.BorderColor3 = Color3.fromRGB(5, 54, 0)
-funnisound.BorderSizePixel = 2
-funnisound.Position = UDim2.new(-0.0170997158, 0, 8.07454586, 0)
-funnisound.Size = UDim2.new(0, 147, 0, 47)
-funnisound.Font = Enum.Font.SourceSans
-funnisound.Text = "Funni Sound"
-funnisound.TextColor3 = Color3.fromRGB(255, 255, 255)
-funnisound.TextScaled = true
-funnisound.TextSize = 14.000
-funnisound.TextWrapped = true
-
-CallofdutyWW2.Name = "CallofdutyWW2"
-CallofdutyWW2.Parent = Title
-CallofdutyWW2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-CallofdutyWW2.BorderColor3 = Color3.fromRGB(5, 54, 0)
-CallofdutyWW2.BorderSizePixel = 2
-CallofdutyWW2.Position = UDim2.new(0.326650292, 0, 8.09454536, 0)
-CallofdutyWW2.Size = UDim2.new(0, 147, 0, 47)
-CallofdutyWW2.Font = Enum.Font.SourceSans
-CallofdutyWW2.Text = "call of duty WW2 lel"
-CallofdutyWW2.TextColor3 = Color3.fromRGB(255, 255, 255)
-CallofdutyWW2.TextScaled = true
-CallofdutyWW2.TextSize = 14.000
-CallofdutyWW2.TextWrapped = true
-
-ss4.Name = "ss4"
-ss4.Parent = Title
-ss4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ss4.BorderColor3 = Color3.fromRGB(5, 54, 0)
-ss4.BorderSizePixel = 2
-ss4.Position = UDim2.new(0.664150357, 0, 8.09454632, 0)
-ss4.Size = UDim2.new(0, 147, 0, 47)
-ss4.Font = Enum.Font.SourceSans
-ss4.Text = "R6"
-ss4.TextColor3 = Color3.fromRGB(255, 255, 255)
-ss4.TextScaled = true
-ss4.TextSize = 14.000
-ss4.TextWrapped = true
-
-Theyneedtodie.Name = "Theyneedtodie"
-Theyneedtodie.Parent = Title
-Theyneedtodie.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Theyneedtodie.BorderColor3 = Color3.fromRGB(5, 54, 0)
-Theyneedtodie.BorderSizePixel = 2
-Theyneedtodie.Position = UDim2.new(0.659983635, 0, 2.57454538, 0)
-Theyneedtodie.Size = UDim2.new(0, 147, 0, 47)
-Theyneedtodie.Font = Enum.Font.SourceSans
-Theyneedtodie.Text = "They Need To Die"
-Theyneedtodie.TextColor3 = Color3.fromRGB(255, 255, 255)
-Theyneedtodie.TextScaled = true
-Theyneedtodie.TextSize = 14.000
-Theyneedtodie.TextWrapped = true
-
-Oldk00p.Name = "Oldk00p"
-Oldk00p.Parent = Title
-Oldk00p.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Oldk00p.BorderColor3 = Color3.fromRGB(5, 54, 0)
-Oldk00p.BorderSizePixel = 2
-Oldk00p.Position = UDim2.new(-0.0191830415, 0, 9.43454552, 0)
-Oldk00p.Size = UDim2.new(0, 147, 0, 47)
-Oldk00p.Font = Enum.Font.SourceSans
-Oldk00p.Text = "Old k00p"
-Oldk00p.TextColor3 = Color3.fromRGB(255, 255, 255)
-Oldk00p.TextScaled = true
-Oldk00p.TextSize = 14.000
-Oldk00p.TextWrapped = true
-
-TextLabel.Parent = Title
-TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BorderColor3 = Color3.fromRGB(0, 89, 29)
-TextLabel.Position = UDim2.new(-0.081249997, 0, 10.8400002, 0)
-TextLabel.Size = UDim2.new(0, 272, 0, 270)
-TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = "The Thanks is for k00pkidd he gave us a funni script and a very c00l group team k00pkidd inspired by team c00lkidd but nah we aint k00p we koopa from super mario!"
-TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 40.000
-TextLabel.TextWrapped = true
-
-ImageLabel.Parent = TextLabel
-ImageLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ImageLabel.BorderColor3 = Color3.fromRGB(0, 85, 0)
-ImageLabel.Position = UDim2.new(1.25, 0, 0, 0)
-ImageLabel.Size = UDim2.new(0, 258, 0, 270)
-ImageLabel.Image = "http://www.roblox.com/asset/?id=12212585289"
-
-Kreekcraftfeet.Name = "Kreekcraftfeet"
-Kreekcraftfeet.Parent = Title
-Kreekcraftfeet.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Kreekcraftfeet.Position = UDim2.new(0.997916579, 0, 0.400000006, 0)
-Kreekcraftfeet.Size = UDim2.new(0, 81, 0, 50)
-Kreekcraftfeet.Font = Enum.Font.SourceSans
-Kreekcraftfeet.Text = "Kreek Feet Jumpscare"
-Kreekcraftfeet.TextColor3 = Color3.fromRGB(0, 0, 0)
-Kreekcraftfeet.TextScaled = true
-Kreekcraftfeet.TextSize = 14.000
-Kreekcraftfeet.TextWrapped = true
-
-Andres.Name = "Andres"
-Andres.Parent = Title
-Andres.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Andres.BorderColor3 = Color3.fromRGB(5, 54, 0)
-Andres.BorderSizePixel = 2
-Andres.Position = UDim2.new(0.659983635, 0, 9.3745451, 0)
-Andres.Size = UDim2.new(0, 147, 0, 47)
-Andres.Font = Enum.Font.SourceSans
-Andres.Text = "XxAndress_Xx"
-Andres.TextColor3 = Color3.fromRGB(255, 255, 255)
-Andres.TextScaled = true
-Andres.TextSize = 14.000
-Andres.TextWrapped = true
-
--- Scripts:
-
-local function KJOYT_fake_script() -- ScrollingFrame.Drag Gui Script 
-	local script = Instance.new('LocalScript', ScrollingFrame)
-
-	function dragify(Main)
-	dragToggle = nil
-	dragSpeed = 0.95 -- You can edit this.
-	dragInput = nil
-	dragStart = nil
-	dragPos = nil
-	
-	function updateInput(input)
-	Delta = input.Position - dragStart
-	Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
-	game:GetService("TweenService"):Create(Main, TweenInfo.new(.25), {Position = Position}):Play()
-	end
-	
-	Main.InputBegan:Connect(function(input)
-	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
-	dragToggle = true
-	dragStart = input.Position
-	startPos = Main.Position
-	input.Changed:Connect(function()
-	if (input.UserInputState == Enum.UserInputState.End) then
-	dragToggle = false
-	end
-	end)
-	end
-	end)
-	
-	Main.InputChanged:Connect(function(input)
-	if (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-	dragInput = input
-	end
-	end)
-	
-	game:GetService("UserInputService").InputChanged:Connect(function(input)
-	if (input == dragInput and dragToggle) then
-	updateInput(input)
-	end
-	end)
-	end
-	
-	dragify(script.Parent)
+if not allowedPlaceIds[game.PlaceId] then
+    game:GetService("Players").LocalPlayer:Kick("Unsupported Game Join Correct.")
+    return
 end
-coroutine.wrap(KJOYT_fake_script)()
-local function SDRQM_fake_script() -- Oldc00l.Script 
-	local script = Instance.new('Script', Oldc00l)
 
-	function click()
-		s = Instance.new("Sky")
-		s.Name = "Sky"
-		s.Parent = game.Lighting
-		s.SkyboxBk = "http://www.roblox.com/asset/?id=12215733629"
-		s.SkyboxDn = "http://www.roblox.com/asset/?id=12215733629"
-		s.SkyboxFt = "http://www.roblox.com/asset/?id=12215733629"
-		s.SkyboxLf = "http://www.roblox.com/asset/?id=12215733629"
-		s.SkyboxRt = "http://www.roblox.com/asset/?id=12215733629"
-		s.SkyboxUp = "http://www.roblox.com/asset/?id=12215733629"
-		game.Lighting.TimeOfDay = 12
-	end
-	
-	script.Parent.MouseButton1Down:connect(click)
+print("Correct Game.")
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+local Window = WindUI:CreateWindow({
+    Title = "Kz hub X Steal Brainrot",
+    Icon = "door-open",
+    Author = "By KzScripter",
+    Folder = "KzHub X Steal Brainrot",
+    Size = UDim2.fromOffset(580, 460),
+    Transparent = true,
+    Theme = "Dark",
+    Resizable = true,
+    SideBarWidth = 200,
+    Background = "",
+    BackgroundImageTransparency = 0.42,
+    HideSearchBar = false, -- importante
+    ScrollBarEnabled = true, -- importante
+    User = {
+        Enabled = true,
+        ZORINHO05 = true,
+        Callback = function()
+            print("clicked")
+        end,
+    },
+})
+
+local InfoTab = Window:Tab({
+    Title = "Info",
+    Icon = "info",
+    Locked = false,
+})
+
+local Button = InfoTab:Button({
+    Title = "Join Discord",
+    Desc = "copy Discord link",
+    Locked = false,
+    Callback = function()
+        setclipboard("https://discord.gg/mv6uWsNqSY")
+    end
+})
+
+local Paragraph = InfoTab:Paragraph({
+    Title = "Sobre o Script",
+    Desc = "CEO : Kz Scripter | Team : Zipp Silent e LobÃ£o \nVersÃ£o Do Script 1.1.0 Beta ",
+    Color = "Grey"
+})
+
+
+
+local MainTab = Window:Tab({
+    Title = "Main",
+    Icon = "house",
+    Locked = false,
+})
+
+-- Godmode Toggle
+local GodmodeConnection
+
+local GodmodeToggle = MainTab:Toggle({
+    Title = "Godmode",
+    Desc = "Makes you not die",
+    Icon = "shield",
+    Type = "Checkbox",
+    Default = false,
+    Callback = function(state)
+        local Player = game:GetService("Players").LocalPlayer
+
+        if state then
+            local Character = Player.Character or Player.CharacterAdded:Wait()
+            local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+
+            if Humanoid then
+                local Clone = Humanoid:Clone()
+                Clone.Parent = Character
+                Humanoid:Destroy()
+                Clone.Name = "Humanoid"
+                workspace.CurrentCamera.CameraSubject = Clone
+            end
+        else
+            warn("Desativar godmode requer reset manual do personagem.")
+        end
+    end
+})
+
+-- Rejoin Button
+local RejoinButton = MainTab:Button({
+    Title = "Rejoin",
+    Desc = "If you use godmode use this (no auto execute)",
+    Icon = "globe",
+    Locked = false,
+    Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        local Player = Players.LocalPlayer
+
+        local placeId = game.PlaceId
+        local jobId = game.JobId
+
+        local success, err = pcall(function()
+            TeleportService:TeleportToPlaceInstance(placeId, jobId, Player)
+        end)
+
+        if not success then
+            warn("Falhou ao tentar reentrar no mesmo servidor:", err)
+            TeleportService:Teleport(placeId, Player)
+        end
+    end
+})
+
+
+local StealTab = Window:Tab({
+    Title = "Steal",
+    Icon = "trending-up",
+    Locked = false,
+})
+
+local Button = StealTab:Button({
+    Title = "Steal Gui",
+    Desc = "Can go to up and down in sky",
+    Locked = false,
+    Callback = function()
+            -- Criar a GUI
+            local ScreenGui = Instance.new("ScreenGui")
+            ScreenGui.Name = "Kz Steal "
+            ScreenGui.ResetOnSpawn = false
+            ScreenGui.Parent = game.CoreGui
+
+            local ToggleButton = Instance.new("TextButton")
+            ToggleButton.Size = UDim2.new(0, 200, 0, 50)
+            ToggleButton.Position = UDim2.new(0, 20, 0.5, -25)
+            ToggleButton.Text = "Teleport UP: OFF"
+            ToggleButton.TextColor3 = Color3.new(1, 1, 1)
+            ToggleButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+            ToggleButton.BorderSizePixel = 0
+            ToggleButton.Font = Enum.Font.GothamBold
+            ToggleButton.TextSize = 14
+            ToggleButton.Active = true
+            ToggleButton.Draggable = true
+            ToggleButton.Parent = ScreenGui  -- corrigido aqui!
+
+            local UICornerBtn = Instance.new("UICorner", ToggleButton)
+
+            -- VariÃ¡veis de controle
+            local toggled = false
+            local originalPosition = nil
+
+            -- FunÃ§Ã£o do toggle
+            ToggleButton.MouseButton1Click:Connect(function()
+                local player = game:GetService("Players").LocalPlayer
+                local char = player.Character or player.CharacterAdded:Wait()
+                local hrp = char:WaitForChild("HumanoidRootPart")
+
+                if not toggled then
+                    originalPosition = hrp.Position
+                    hrp.CFrame = hrp.CFrame + Vector3.new(0, 200, 0)
+                    ToggleButton.Text = "Teleport UP: ON"
+                    toggled = true
+                else
+                    if originalPosition then
+                        hrp.CFrame = CFrame.new(originalPosition)
+                    else
+                        hrp.CFrame = hrp.CFrame - Vector3.new(0, 200, 0)
+                    end
+                    ToggleButton.Text = "Teleport UP: OFF"
+                    toggled = false
+                end
+            end)
+    end
+})
+
+
+local Button = StealTab:Button({
+    Title = "Speed boost",
+    Desc = "Boosts your speed for best steal",
+    Locked = false,
+    Callback = function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 94
+    end
+})
+
+local Button = StealTab:Button({
+    Title = "Float Gui",
+    Desc = "Floats you for better steal",
+    Locked = false,
+    Callback = function()
+            --// Float GUI Suave estilo Steal a Brainrot (com ON/OFF)
+            --// Criado por KzScriptsOfc 
+
+            local player = game.Players.LocalPlayer
+            local floatAtivo = false
+            local floatConnection = nil
+
+            -- GUI Setup
+            local gui = Instance.new("ScreenGui")
+            gui.Name = "Kz Float Ui"
+            gui.ResetOnSpawn = false
+            gui.Parent = game.CoreGui
+
+            local main = Instance.new("Frame")
+            main.Name = "Main"
+            main.Size = UDim2.new(0, 200, 0, 100)
+            main.Position = UDim2.new(0.5, -100, 0.5, -50)
+            main.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+            main.BorderSizePixel = 0
+            main.Active = true
+            main.Draggable = true
+            main.Parent = gui
+
+            local title = Instance.new("TextLabel")
+            title.Name = "Title"
+            title.Size = UDim2.new(1, 0, 0, 30)
+            title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+            title.Text = "Float Steal Mode"
+            title.TextColor3 = Color3.fromRGB(255, 255, 255)
+            title.Font = Enum.Font.SourceSansBold
+            title.TextSize = 16
+            title.Parent = main
+
+            local button = Instance.new("TextButton")
+            button.Name = "FloatButton"
+            button.Size = UDim2.new(0.8, 0, 0, 30)
+            button.Position = UDim2.new(0.1, 0, 0.5, -15)
+            button.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+            button.Text = "Active Float"
+            button.TextColor3 = Color3.fromRGB(255, 255, 255)
+            button.Font = Enum.Font.SourceSansBold
+            button.TextSize = 14
+            button.Parent = main
+
+            -- FunÃ§Ã£o para aplicar float
+            local function applyFloat(character)
+                local hrp = character:WaitForChild("HumanoidRootPart")
+
+                -- Remover anterior
+                if hrp:FindFirstChild("FloatPosition") then
+                    hrp:FindFirstChild("FloatPosition"):Destroy()
+                end
+
+                local bp = Instance.new("BodyPosition")
+                bp.Name = "FloatPosition"
+                bp.MaxForce = Vector3.new(0, 100000, 0)
+                bp.Position = hrp.Position + Vector3.new(0, 0.65, 0)
+                bp.D = 1000
+                bp.P = 3000
+                bp.Parent = hrp
+
+                -- Atualiza a posiÃ§Ã£o sempre
+                floatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                    if character and hrp and bp and character:FindFirstChild("Humanoid") and character.Humanoid.Health > 0 then
+                        bp.Position = hrp.Position + Vector3.new(0, 0.65, 0)
+                    else
+                        if floatConnection then
+                            floatConnection:Disconnect()
+                            floatConnection = nil
+                        end
+                    end
+                end)
+            end
+
+            -- FunÃ§Ã£o para remover float
+            local function removeFloat(character)
+                local hrp = character:FindFirstChild("HumanoidRootPart")
+                if hrp and hrp:FindFirstChild("FloatPosition") then
+                    hrp.FloatPosition:Destroy()
+                end
+                if floatConnection then
+                    floatConnection:Disconnect()
+                    floatConnection = nil
+                end
+            end
+
+            -- BotÃ£o ON/OFF
+            button.MouseButton1Click:Connect(function()
+                floatAtivo = not floatAtivo
+
+                if floatAtivo then
+                    button.Text = "Put OFF"
+                    button.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
+
+                    if player.Character then
+                        applyFloat(player.Character)
+                    end
+                else
+                    button.Text = "Active Float"
+                    button.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+
+                    if player.Character then
+                        removeFloat(player.Character)
+                    end
+                end
+            end)
+
+            -- Float automÃ¡tico no respawn (se ativo)
+            player.CharacterAdded:Connect(function(char)
+                wait(1)
+                if floatAtivo then
+                    applyFloat(char)
+                end
+            end)
+    end
+})
+
+
+local UserInputService = game:GetService("UserInputService")
+local player = game.Players.LocalPlayer
+
+local DoubleJumpActive = false
+local DoubleJumpConnection = nil
+local StateConnection = nil
+
+local function enableDoubleJump()
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    local canDoubleJump = true
+
+    -- Reativa o double jump ao cair no chÃ£o
+    StateConnection = humanoid.StateChanged:Connect(function(_, newState)
+        if newState == Enum.HumanoidStateType.Landed then
+            canDoubleJump = true
+        end
+    end)
+
+    -- AÃ§Ã£o do pulo duplo
+    DoubleJumpConnection = UserInputService.JumpRequest:Connect(function()
+        if humanoid.FloorMaterial ~= Enum.Material.Air then
+            canDoubleJump = true
+        elseif canDoubleJump then
+            canDoubleJump = false
+            humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+        end
+    end)
 end
-coroutine.wrap(SDRQM_fake_script)()
-local function KRJXWD_fake_script() -- Oldc00l.Script 
-	local script = Instance.new('Script', Oldc00l)
 
-	script.Parent.MouseButton1Click:Connect(function()
-		for i, v in pairs(game.Players:GetChildren()) do
-			emit = Instance.new("ParticleEmitter")
-			emit.Parent = v.Character.Head
-			emit.Texture = "http://www.roblox.com/asset/?id=12215733629"
-			emit.VelocitySpread = 100000
-		end
-		end)
+local function disableDoubleJump()
+    if DoubleJumpConnection then
+        DoubleJumpConnection:Disconnect()
+        DoubleJumpConnection = nil
+    end
+    if StateConnection then
+        StateConnection:Disconnect()
+        StateConnection = nil
+    end
 end
-coroutine.wrap(KRJXWD_fake_script)()
-local function BEODDN_fake_script() -- Oldc00l.Script 
-	local script = Instance.new('Script', Oldc00l)
 
-	function click()
-		function exPro(root)
-			for _, v in pairs(root:GetChildren()) do
-				if v:IsA("Decal") and v.Texture ~= "http://www.roblox.com/asset/?id=12215733629" then
-					v.Parent = nil
-				elseif v:IsA("BasePart") then
-					v.Material = "Plastic"
-					v.Transparency = 0
-					local One = Instance.new("Decal", v)
-					local Two = Instance.new("Decal", v)
-					local Three = Instance.new("Decal", v)
-					local Four = Instance.new("Decal", v)
-					local Five = Instance.new("Decal", v)
-					local Six = Instance.new("Decal", v)
-					One.Texture = "http://www.roblox.com/asset/?id=12215733629"
-					Two.Texture = "http://www.roblox.com/asset/?id=12215733629"
-					Three.Texture = "http://www.roblox.com/asset/?id=12215733629"
-					Four.Texture = "http://www.roblox.com/asset/?id=12215733629"
-					Five.Texture = "http://www.roblox.com/asset/?id=12215733629"
-					Six.Texture = "http://www.roblox.com/asset/?id=12215733629"
-					One.Face = "Front"
-					Two.Face = "Back"
-					Three.Face = "Right"
-					Four.Face = "Left"
-					Five.Face = "Top"
-					Six.Face = "Bottom"
-				end
-				exPro(v)
-			end
-		end
-		function asdf(root)
-			for _, v in pairs(root:GetChildren()) do
-				asdf(v)
-			end
-		end
-		exPro(game.Workspace)
-		asdf(game.Workspace)
-	end
-	
-	script.Parent.MouseButton1Down:connect(click)
-end
-coroutine.wrap(BEODDN_fake_script)()
-local function UZPKSW_fake_script() -- k00p.Sky 
-	local script = Instance.new('Script', k00p)
+-- Seu Toggle UI
+local Toggle = StealTab:Toggle({
+    Title = "Double Jump",
+    Desc = "Double Jumps you",
+    Icon = "mouse-pointer-click",
+    Type = "Checkbox",
+    Default = false,
+    Callback = function(state)
+        print("Toggle Activated: " .. tostring(state))
+        DoubleJumpActive = state
 
--- deleted ip grabber here lol ðŸ‘Œ
+        if state then
+            enableDoubleJump()
+        else
+            disableDoubleJump()
+        end
+    end
+})
 
-	script.Parent.MouseButton1Click:Connect(function()
-		for i, v in pairs(game.Players:GetChildren()) do
-			emit = Instance.new("ParticleEmitter")
-			emit.Parent = v.Character.Head
-			emit.Texture = "http://www.roblox.com/asset/?id=12213443368"
-			emit.VelocitySpread = 100000
-		end
-		end)
-end
-coroutine.wrap(SYIL_fake_script)()
-local function ULMWR_fake_script() -- k00p.Decalspam 
-	local script = Instance.new('Script', k00p)
+-- Auto reativar apÃ³s respawn (se toggle estiver ON)
+player.CharacterAdded:Connect(function()
+    wait(1)
+    if DoubleJumpActive then
+        enableDoubleJump()
+    end
+end)
 
-	function click()
-		function exPro(root)
-			for _, v in pairs(root:GetChildren()) do
-				if v:IsA("Decal") and v.Texture ~= "http://www.roblox.com/asset/?id=12213443368" then
-					v.Parent = nil
-				elseif v:IsA("BasePart") then
-					v.Material = "Plastic"
-					v.Transparency = 0
-					local One = Instance.new("Decal", v)
-					local Two = Instance.new("Decal", v)
-					local Three = Instance.new("Decal", v)
-					local Four = Instance.new("Decal", v)
-					local Five = Instance.new("Decal", v)
-					local Six = Instance.new("Decal", v)
-					One.Texture = "http://www.roblox.com/asset/?id=12213443368"
-					Two.Texture = "http://www.roblox.com/asset/?id=12213443368"
-					Three.Texture = "http://www.roblox.com/asset/?id=12213443368"
-					Four.Texture = "http://www.roblox.com/asset/?id=12213443368"
-					Five.Texture = "http://www.roblox.com/asset/?id=12213443368"
-					Six.Texture = "http://www.roblox.com/asset/?id=12213443368"
-					One.Face = "Front"
-					Two.Face = "Back"
-					Three.Face = "Right"
-					Four.Face = "Left"
-					Five.Face = "Top"
-					Six.Face = "Bottom"
-				end
-				exPro(v)
-			end
-		end
-		function asdf(root)
-			for _, v in pairs(root:GetChildren()) do
-				asdf(v)
-			end
-		end
-		exPro(game.Workspace)
-		asdf(game.Workspace)
-	end
-	
-	script.Parent.MouseButton1Down:connect(click)
-end
-coroutine.wrap(ULMWR_fake_script)()
-local function DFJZ_fake_script() -- Playmusic.Script 
-	local script = Instance.new('Script', Playmusic)
+-- Instant steal
+local Button = StealTab:Button({
+    Title = "Instant steal",
+    Desc = "i cant make use script for this (OP)",
+    Locked = false,
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Youifpg/Steal-a-Brianrot/refs/heads/main/Slowversion.lua"))()
+    end
+})
 
-	function onClick()
-		local tubers93		= Instance.new("Sound")
-		tubers93.Parent		= game:GetService("Workspace")
-		tubers93.SoundId		= "rbxassetid://5925731369"
-		tubers93.Playing		= true
-		tubers93.Looped		= false
-		tubers93.Volume		= 5
-		tubers93.Pitch      = 0.5
-		
-	end
-	
-	script.Parent.MouseButton1Down:connect(onClick)
-end
-coroutine.wrap(DFJZ_fake_script)()
-local function UDVYAWU_fake_script() -- hint.Script 
-	local script = Instance.new('Script', hint)
 
-	script.Parent.MouseButton1Click:Connect(function()
-		local m = Instance.new("Hint", game.workspace)
-		m.Text = " K00PKIDD BACK TO DESTROY HAHA"
-	end)
-end
-coroutine.wrap(UDVYAWU_fake_script)()
-local function CUKPF_fake_script() -- _666.Script 
-	local script =
+local VisualTab = Window:Tab({
+    Title = "Visual",
+    Icon = "eye",
+    Locked = false,
+})
+
+
+local Toggle = VisualTab:Toggle({
+    Title = "Esp Players",
+    Desc = "Esp Players",
+    Icon = "eye",
+    Type = "Checkbox",
+    Default = false,
+    Callback = function(state) 
+        local espEnabled = state
+        local Players = game:GetService("Players")
+
+        local function createESP(player)
+            if player == Players.LocalPlayer then return end
+
+            local character = player.Character or player.CharacterAdded:Wait()
+            if not character then return end
+
+            local head = character:WaitForChild("Head")
+            if not head then return end
+
+            local box = Instance.new("BillboardGui")
+            box.Name = "ESPBox"
+            box.Adornee = head
+            box.Size = UDim2.new(0, 50, 0, 50)
+            box.StudsOffsetWorldSpace = Vector3.new(0, 2, 0)
+            box.AlwaysOnTop = true
+            box.Parent = head
+
+            local frame = Instance.new("Frame")
+            frame.Size = UDim2.new(1, 0, 1, 0)
+            frame.BackgroundTransparency = 0.8
+            frame.BackgroundColor3 = Color3.new(0, 1, 0)
+            frame.Parent = box
+
+            local nameLabel = Instance.new("TextLabel")
+            nameLabel.Size = UDim2.new(1, 0, 0.5, 0)
+            nameLabel.Position = UDim2.new(0, 0, -0.5, 0)
+            nameLabel.Text = player.Name
+            nameLabel.TextColor3 = Color3.new(1, 1, 1)
+            nameLabel.BackgroundTransparency = 1
+            nameLabel.TextStrokeColor3 = Color3.new(0,0,0)
+            nameLabel.TextStrokeTransparency = 0
+            nameLabel.Font = Enum.Font.SourceSansBold
+            nameLabel.TextSize = 14
+            nameLabel.Parent = frame
+        end
+
+        local function removeESP(player)
+            if player and player.Character then
+                local character = player.Character
+                if character:FindFirstChild("Head") then
+                    local head = character:FindFirstChild("Head")
+                         if head:FindFirstChild("ESPBox") then
+                              head.ESPBox:Destroy()
+                         end
+                end
+            end
+        end
+
+        if espEnabled then
+            for _, player in ipairs(Players:GetPlayers()) do
+                createESP(player)
+            end
+        else
+            for _, player in ipairs(Players:GetPlayers()) do
+                removeESP(player)
+            end
+        end
+
+        Players.PlayerAdded:Connect(function(player)
+            if espEnabled then
+                wait(1)
+                createESP(player)
+            end
+        end)
+
+        Players.PlayerRemoving:Connect(function(player)
+            removeESP(player)
+        end)
+    end
+})
+
+
+local Button = VisualTab:Button({
+    Title = "Show Player Count",
+    Desc = "Shows How Much Player",
+    Locked = false,
+    Callback = function()
+            local Players = game:GetService("Players")
+            local StarterGui = game:GetService("StarterGui")
+
+            -- Conta quantos jogadores estÃ£o no jogo agora
+            local playerCount = #Players:GetPlayers()
+
+            -- Mostra uma notificaÃ§Ã£o com esse nÃºmero
+            StarterGui:SetCore("SendNotification", {
+                Title = " Player Count",
+                Text = "There are " .. playerCount .. " players in the game.",
+                Duration = 5
+            })
+    end
+})
+
+
+local Button = VisualTab:Button({
+    Title = "Anti Lag",
+    Desc = "For Low pc and mobile",
+    Locked = false,
+    Callback = function()
+            
+            local ws = game:GetService("Workspace")
+            local lighting = game:GetService("Lighting")
+
+            -- Removes Effects
+            for _, v in pairs(ws:GetDescendants()) do
+                if v:IsA("BasePart") then
+                    v.Material = Enum.Material.SmoothPlastic
+                    v.Reflectance = 0
+                    v.CastShadow = false
+                end
+                if v:IsA("Decal") or v:IsA("Texture") or v:IsA("ParticleEmitter") or v:IsA("Fire") or v:IsA("Smoke") or v:IsA("Sparkles") then
+                    v:Destroy()
+                end
+                if v:IsA("PointLight") or v:IsA("SurfaceLight") or v:IsA("SpotLight") then
+                    v.Enabled = false
+                end
+            end
+
+            
+            lighting.GlobalShadows = false
+            lighting.FogEnd = 1e10
+            lighting.Brightness = 0
+            lighting.ClockTime = 14 -- makes Map Clear
+            lighting.EnvironmentDiffuseScale = 0
+            lighting.EnvironmentSpecularScale = 0
+
+            -- Removes water Effects
+            ws.Terrain.WaterWaveSize = 0
+            ws.Terrain.WaterWaveSpeed = 0
+            ws.Terrain.WaterReflectance = 0
+            ws.Terrain.WaterTransparency = 1
+    end
+})
+
+
+local FinderTab = Window:Tab({
+    Title = "Finder",
+    Icon = "shiel-user",
+    Locked = false,
+})
+
+
+local Button = FinderTab:Button({
+    Title = "Server hop",
+    Desc = "Server hops you to new server",
+    Locked = false,
+    Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local PlaceId = game.PlaceId
+        TeleportService:Teleport(PlaceId, game.Players.LocalPlayer)
+    end
+})
+
+local Button = FinderTab:Button({
+    Title = "Try find a target in server hop",
+    Desc = "This is a just a warning",
+    Locked = false,
+    Callback = function()
+        print("Warning")
+    end
+})
+
+
+local Button = FinderTab:Button({
+    Title = "Join Small Server",
+    Desc = "Joins a Server with low players",
+    Locked = false,
+    Callback = function()
+
+            local HttpService = game:GetService("HttpService")
+            local TeleportService = game:GetService("TeleportService")
+            local Players = game:GetService("Players")
+
+            local function GetLowPlayerServer()
+                local jobIdAtual = game.JobId
+                local PlaceId = game.PlaceId
+                local Cursor = nil
+                local ListaFinal = {}
+
+                for i = 1, 10 do -- tenta atÃ© 10 pÃ¡ginas de servidores
+                    local url = "https://games.roblox.com/v1/games/"..PlaceId.."/servers/Public?sortOrder=Asc&limit=100"
+                    if Cursor then
+                        url = url .. "&cursor=" .. Cursor
+                    end  
+               local success, result = pcall(function()
+                        return HttpService:JSONDecode(game:HttpGet(url))
+                    end)
+
+                    if success and result and result.data then
+                        for _, server in pairs(result.data) do
+                            if server.playing < server.maxPlayers and server.id ~= jobIdAtual then
+                                table.insert(ListaFinal, server)
+                            end
+                        end
+
+                        Cursor = result.nextPageCursor
+                        if not Cursor then
+                            break
+                        end
+                    else
+                        warn("Erro ao buscar servidores.")
+                        break
+                    end
+                end
+
+                -- Escolhe aleatoriamente um servidor com poucos jogadores
+                if #ListaFinal > 0 then
+                    local servidorEscolhido = ListaFinal[math.random(1, #ListaFinal)]
+                    return servidorEscolhido.id
+                else
+                    return nil
+                end
+            end
+
+            local servidorAlvo = GetLowPlayerServer()
+
+            if servidorAlvo then
+                TeleportService:TeleportToPlaceInstance(game.PlaceId, servidorAlvo, Players.LocalPlayer)
+                print("Teleporting to low players server...")
+            else
+                warn("Low players server Not found.")
+            end
+    end
+})
+
+local Button = FinderTab:Button({
+    Title = "Warning:",
+    Desc = "Try find best low server",
+    Locked = false,
+    Callback = function()
+        print("Low Server")
+    end
+})
