@@ -1,26 +1,27 @@
--- Part 1/2 - YoxanXHub | Steal a Brainrot (Converted to OrionLib)
+-- YoxanXHub | Steal a Brainrot | Part 1/2
 
--- Game whitelist check
+-- Game whitelist
 local allowedPlaceIds = {
-    [96342491571673] = true,
-    [109983668079237] = true
+    [96342491571673] = true, -- New Player Server
+    [109983668079237] = true -- Normal Server
 }
 
 if not allowedPlaceIds[game.PlaceId] then
-    game.Players.LocalPlayer:Kick("Unsupported Game Join Correct.")
+    game.Players.LocalPlayer:Kick("This game is not supported.")
     return
 end
 
 -- Load OrionLib
 local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/1nig1htmare1234/SCRIPTS/main/Orion.lua"))()
-
--- Create main window
 local Window = OrionLib:MakeWindow({
     Name = "YoxanXHub | Steal a Brainrot",
     HidePremium = false,
     SaveConfig = true,
-    ConfigFolder = "YoxanX_StealBrainrot"
+    ConfigFolder = "YoxanXHub_SAB"
 })
+
+local player = game.Players.LocalPlayer
+local savedBaseCFrame = nil
 
 -- Info Tab
 local InfoTab = Window:MakeTab({
@@ -29,19 +30,19 @@ local InfoTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+InfoTab:AddParagraph("About", "YoxanXHub - Script for Steal a Brainrot\nVersion: 1.0\nDiscord: discord.gg/Az8Cm2F6")
+
 InfoTab:AddButton({
-    Name = "Join Discord",
+    Name = "Copy Discord Link",
     Callback = function()
-        setclipboard("https://discord.gg/mv6uWsNqSY")
+        setclipboard("https://discord.gg/Az8Cm2F6")
     end
 })
-
-InfoTab:AddParagraph("About", "CEO : Kz Scripter | Team : Zipp Silent & Lobão\nVersion : 1.1.0 Beta")
 
 -- Main Tab
 local MainTab = Window:MakeTab({
     Name = "Main",
-    Icon = "rbxassetid://6026568228",
+    Icon = "rbxassetid://6031280882",
     PremiumOnly = false
 })
 
@@ -49,19 +50,16 @@ MainTab:AddToggle({
     Name = "Godmode",
     Default = false,
     Callback = function(state)
-        local Player = game.Players.LocalPlayer
-        if state then
-            local Character = Player.Character or Player.CharacterAdded:Wait()
-            local Humanoid = Character:FindFirstChildOfClass("Humanoid")
-            if Humanoid then
-                local Clone = Humanoid:Clone()
-                Clone.Parent = Character
-                Humanoid:Destroy()
-                Clone.Name = "Humanoid"
-                workspace.CurrentCamera.CameraSubject = Clone
-            end
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+        if state and humanoid then
+            local clone = humanoid:Clone()
+            clone.Parent = character
+            humanoid:Destroy()
+            clone.Name = "Humanoid"
+            workspace.CurrentCamera.CameraSubject = clone
         else
-            warn("Reset manually to remove godmode.")
+            warn("Reset your character to disable Godmode.")
         end
     end
 })
@@ -69,18 +67,7 @@ MainTab:AddToggle({
 MainTab:AddButton({
     Name = "Rejoin Server",
     Callback = function()
-        local TeleportService = game:GetService("TeleportService")
-        local placeId = game.PlaceId
-        local jobId = game.JobId
-        local player = game.Players.LocalPlayer
-
-        local success, err = pcall(function()
-            TeleportService:TeleportToPlaceInstance(placeId, jobId, player)
-        end)
-        if not success then
-            warn("Teleport failed:", err)
-            TeleportService:Teleport(placeId, player)
-        end
+        game:GetService("TeleportService"):Teleport(game.PlaceId, player)
     end
 })
 
@@ -92,205 +79,127 @@ local StealTab = Window:MakeTab({
 })
 
 StealTab:AddButton({
-    Name = "Steal GUI",
+    Name = "📍 Save Base Location",
     Callback = function()
-        local gui = Instance.new("ScreenGui", game.CoreGui)
-        gui.Name = "Kz Steal"
+        local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+        if hrp then
+            savedBaseCFrame = hrp.CFrame
+            OrionLib:MakeNotification({
+                Name = "Location Saved",
+                Content = "Current position saved as base.",
+                Time = 3
+            })
+        end
+    end
+})
 
-        local btn = Instance.new("TextButton", gui)
-        btn.Size = UDim2.new(0, 200, 0, 50)
-        btn.Position = UDim2.new(0, 20, 0.5, -25)
-        btn.Text = "Teleport UP: OFF"
-        btn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-        btn.TextColor3 = Color3.new(1, 1, 1)
-        btn.Font = Enum.Font.GothamBold
-        btn.TextSize = 14
-        btn.Draggable = true
-        Instance.new("UICorner", btn)
+StealTab:AddButton({
+    Name = "🚀 Teleport to Base",
+    Callback = function()
+        local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+        if hrp and savedBaseCFrame then
+            hrp.CFrame = savedBaseCFrame
+            OrionLib:MakeNotification({
+                Name = "Teleported",
+                Content = "Teleported to saved base location.",
+                Time = 3
+            })
+        else
+            OrionLib:MakeNotification({
+                Name = "Error",
+                Content = "No base saved. Use Save Base Location first.",
+                Time = 3
+            })
+        end
+    end
+})
 
-        local toggled = false
-        local originalPosition
+StealTab:AddButton({
+    Name = "⬆️ Float Up",
+    Callback = function()
+        local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+        if hrp then
+            hrp.CFrame = hrp.CFrame + Vector3.new(0, 200, 0)
+        end
+    end
+})
 
-        btn.MouseButton1Click:Connect(function()
-            local player = game.Players.LocalPlayer
-            local char = player.Character or player.CharacterAdded:Wait()
-            local hrp = char:WaitForChild("HumanoidRootPart")
+StealTab:AddButton({
+    Name = "⚡ Speed Boost (94)",
+    Callback = function()
+        local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+        if hum then hum.WalkSpeed = 94 end
+    end
+})
 
-            if not toggled then
-                originalPosition = hrp.Position
-                hrp.CFrame = hrp.CFrame + Vector3.new(0, 200, 0)
-                btn.Text = "Teleport UP: ON"
-                toggled = true
-            else
-                if originalPosition then
-                    hrp.CFrame = CFrame.new(originalPosition)
-                else
-                    hrp.CFrame = hrp.CFrame - Vector3.new(0, 200, 0)
+StealTab:AddToggle({
+    Name = "🌀 Double Jump",
+    Default = false,
+    Callback = function(state)
+        local UIS = game:GetService("UserInputService")
+        local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+        local canDouble = true
+        if state then
+            hum.StateChanged:Connect(function(_, s)
+                if s == Enum.HumanoidStateType.Landed then
+                    canDouble = true
                 end
-                btn.Text = "Teleport UP: OFF"
-                toggled = false
-            end
-        end)
-    end
-})
-
-StealTab:AddButton({
-    Name = "Speed Boost",
-    Callback = function()
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 94
-    end
-})
-
-StealTab:AddButton({
-    Name = "Float GUI",
-    Callback = function()
-        local player = game.Players.LocalPlayer
-        local floatOn = false
-        local floatConn
-
-        local gui = Instance.new("ScreenGui", game.CoreGui)
-        gui.Name = "Kz Float Ui"
-
-        local frame = Instance.new("Frame", gui)
-        frame.Size = UDim2.new(0, 200, 0, 100)
-        frame.Position = UDim2.new(0.5, -100, 0.5, -50)
-        frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-        frame.Draggable = true
-        frame.Active = true
-
-        local label = Instance.new("TextLabel", frame)
-        label.Size = UDim2.new(1, 0, 0, 30)
-        label.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-        label.Text = "Float Steal Mode"
-        label.TextColor3 = Color3.new(1,1,1)
-        label.Font = Enum.Font.SourceSansBold
-        label.TextSize = 16
-
-        local button = Instance.new("TextButton", frame)
-        button.Size = UDim2.new(0.8, 0, 0, 30)
-        button.Position = UDim2.new(0.1, 0, 0.5, -15)
-        button.Text = "Active Float"
-        button.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
-        button.TextColor3 = Color3.new(1,1,1)
-        button.Font = Enum.Font.SourceSansBold
-        button.TextSize = 14
-
-        local function applyFloat(char)
-            local hrp = char:WaitForChild("HumanoidRootPart")
-            if hrp:FindFirstChild("FloatPosition") then
-                hrp:FindFirstChild("FloatPosition"):Destroy()
-            end
-
-            local bp = Instance.new("BodyPosition")
-            bp.Name = "FloatPosition"
-            bp.MaxForce = Vector3.new(0, 100000, 0)
-            bp.Position = hrp.Position + Vector3.new(0, 0.65, 0)
-            bp.D = 1000
-            bp.P = 3000
-            bp.Parent = hrp
-
-            floatConn = game:GetService("RunService").Heartbeat:Connect(function()
-                if char and hrp and bp and char:FindFirstChild("Humanoid") and char.Humanoid.Health > 0 then
-                    bp.Position = hrp.Position + Vector3.new(0, 0.65, 0)
-                else
-                    if floatConn then floatConn:Disconnect() end
+            end)
+            UIS.JumpRequest:Connect(function()
+                if hum.FloorMaterial == Enum.Material.Air and canDouble then
+                    canDouble = false
+                    hum:ChangeState(Enum.HumanoidStateType.Jumping)
                 end
             end)
         end
-
-        local function removeFloat(char)
-            local hrp = char:FindFirstChild("HumanoidRootPart")
-            if hrp and hrp:FindFirstChild("FloatPosition") then
-                hrp.FloatPosition:Destroy()
-            end
-            if floatConn then
-                floatConn:Disconnect()
-            end
-        end
-
-        button.MouseButton1Click:Connect(function()
-            floatOn = not floatOn
-            if floatOn then
-                button.Text = "Put OFF"
-                button.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
-                if player.Character then applyFloat(player.Character) end
-            else
-                button.Text = "Active Float"
-                button.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
-                if player.Character then removeFloat(player.Character) end
-            end
-        end)
-
-        player.CharacterAdded:Connect(function(char)
-            wait(1)
-            if floatOn then applyFloat(char) end
-        end)
     end
 })
-
--- Part 2/2 - Lanjutan YoxanXHub | Steal a Brainrot (OrionLib)
-
--- Lanjutan Steal Tab
-local player = game.Players.LocalPlayer
-local DoubleJumpActive = false
-local DoubleJumpConnection = nil
-local StateConnection = nil
-local UserInputService = game:GetService("UserInputService")
-
-local function enableDoubleJump()
-    local character = player.Character or player.CharacterAdded:Wait()
-    local humanoid = character:WaitForChild("Humanoid")
-    local canDoubleJump = true
-
-    StateConnection = humanoid.StateChanged:Connect(function(_, newState)
-        if newState == Enum.HumanoidStateType.Landed then
-            canDoubleJump = true
-        end
-    end)
-
-    DoubleJumpConnection = UserInputService.JumpRequest:Connect(function()
-        if humanoid.FloorMaterial ~= Enum.Material.Air then
-            canDoubleJump = true
-        elseif canDoubleJump then
-            canDoubleJump = false
-            humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-        end
-    end)
-end
-
-local function disableDoubleJump()
-    if DoubleJumpConnection then
-        DoubleJumpConnection:Disconnect()
-        DoubleJumpConnection = nil
-    end
-    if StateConnection then
-        StateConnection:Disconnect()
-        StateConnection = nil
-    end
-end
-
-StealTab:AddToggle({
-    Name = "Double Jump",
-    Default = false,
-    Callback = function(state)
-        DoubleJumpActive = state
-        if state then enableDoubleJump() else disableDoubleJump() end
-    end
-})
-
-player.CharacterAdded:Connect(function()
-    wait(1)
-    if DoubleJumpActive then
-        enableDoubleJump()
-    end
-end)
 
 StealTab:AddButton({
-    Name = "Instant Steal",
+    Name = "💥 Instant Steal",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Youifpg/Steal-a-Brianrot/refs/heads/main/Slowversion.lua"))()
+        local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+        if not hrp then return end
+
+        hrp.CFrame = hrp.CFrame + Vector3.new(0, 200, 0)
+
+        OrionLib:MakeNotification({
+            Name = "Steal Started",
+            Content = "Floating up... teleporting to base shortly.",
+            Time = 2
+        })
+
+        task.delay(1.5, function()
+            if savedBaseCFrame then
+                hrp.CFrame = savedBaseCFrame
+                OrionLib:MakeNotification({
+                    Name = "Returned",
+                    Content = "You returned to your base.",
+                    Time = 3
+                })
+            else
+                OrionLib:MakeNotification({
+                    Name = "No Base Saved",
+                    Content = "Use 'Save Base Location' first.",
+                    Time = 3
+                })
+            end
+        end)
     end
 })
+
+-- Init UI
+OrionLib:Init()
+-- YoxanXHub | Steal a Brainrot | Part 2/2
+
+-- Continue from Part 1/2
+local OrionLib = OrionLib or nil
+if not OrionLib then
+    warn("OrionLib not loaded. Please run Part 1/2 first.")
+    return
+end
+
+local player = game.Players.LocalPlayer
 
 -- Visual Tab
 local VisualTab = Window:MakeTab({
@@ -299,75 +208,81 @@ local VisualTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+-- ESP Toggle (Player ESP)
 VisualTab:AddToggle({
-    Name = "ESP Players",
+    Name = "👁️ Player ESP",
     Default = false,
     Callback = function(state)
         local Players = game:GetService("Players")
 
-        local function createESP(player)
-            if player == Players.LocalPlayer then return end
-            local character = player.Character or player.CharacterAdded:Wait()
-            local head = character:WaitForChild("Head")
-            local box = Instance.new("BillboardGui")
-            box.Name = "ESPBox"
-            box.Adornee = head
-            box.Size = UDim2.new(0, 50, 0, 50)
-            box.StudsOffsetWorldSpace = Vector3.new(0, 2, 0)
-            box.AlwaysOnTop = true
-            box.Parent = head
+        local function createESP(targetPlayer)
+            if targetPlayer == player then return end
+            local char = targetPlayer.Character or targetPlayer.CharacterAdded:Wait()
+            local head = char:WaitForChild("Head", 2)
+            if not head then return end
 
-            local frame = Instance.new("Frame")
-            frame.Size = UDim2.new(1, 0, 1, 0)
-            frame.BackgroundTransparency = 0.8
-            frame.BackgroundColor3 = Color3.new(0, 1, 0)
-            frame.Parent = box
+            if not head:FindFirstChild("YoxanX_ESP") then
+                local esp = Instance.new("BillboardGui")
+                esp.Name = "YoxanX_ESP"
+                esp.Adornee = head
+                esp.Size = UDim2.new(0, 50, 0, 50)
+                esp.StudsOffset = Vector3.new(0, 2, 0)
+                esp.AlwaysOnTop = true
+                esp.Parent = head
 
-            local label = Instance.new("TextLabel")
-            label.Size = UDim2.new(1, 0, 0.5, 0)
-            label.Position = UDim2.new(0, 0, -0.5, 0)
-            label.Text = player.Name
-            label.BackgroundTransparency = 1
-            label.TextColor3 = Color3.new(1, 1, 1)
-            label.TextStrokeTransparency = 0
-            label.Font = Enum.Font.SourceSansBold
-            label.TextSize = 14
-            label.Parent = frame
+                local frame = Instance.new("Frame")
+                frame.Size = UDim2.new(1, 0, 1, 0)
+                frame.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+                frame.BackgroundTransparency = 0.25
+                frame.BorderSizePixel = 0
+                frame.Parent = esp
+
+                local label = Instance.new("TextLabel")
+                label.Size = UDim2.new(1, 0, 0.5, 0)
+                label.Position = UDim2.new(0, 0, -0.5, 0)
+                label.Text = targetPlayer.Name
+                label.BackgroundTransparency = 1
+                label.TextColor3 = Color3.new(1, 1, 1)
+                label.Font = Enum.Font.SourceSansBold
+                label.TextSize = 14
+                label.Parent = esp
+            end
         end
 
-        local function removeESP(player)
-            local character = player.Character
-            if character and character:FindFirstChild("Head") then
-                local head = character.Head
-                if head:FindFirstChild("ESPBox") then
-                    head.ESPBox:Destroy()
+        local function removeESP(targetPlayer)
+            local char = targetPlayer.Character
+            if char and char:FindFirstChild("Head") then
+                local head = char.Head
+                if head:FindFirstChild("YoxanX_ESP") then
+                    head.YoxanX_ESP:Destroy()
                 end
             end
         end
 
-        if state then
-            for _, p in pairs(Players:GetPlayers()) do
+        for _, p in pairs(Players:GetPlayers()) do
+            if state then
                 createESP(p)
-            end
-        else
-            for _, p in pairs(Players:GetPlayers()) do
+            else
                 removeESP(p)
             end
         end
 
         Players.PlayerAdded:Connect(function(p)
             if state then
-                wait(1)
+                task.wait(1)
                 createESP(p)
             end
         end)
 
-        Players.PlayerRemoving:Connect(removeESP)
+        Players.PlayerRemoving:Connect(function(p)
+            removeESP(p)
+        end)
     end
 })
 
+-- Player Count
 VisualTab:AddButton({
-    Name = "Show Player Count",
+    Name = "👥 Show Player Count",
     Callback = function()
         local count = #game.Players:GetPlayers()
         game:GetService("StarterGui"):SetCore("SendNotification", {
@@ -378,21 +293,21 @@ VisualTab:AddButton({
     end
 })
 
+-- Anti Lag Button
 VisualTab:AddButton({
-    Name = "Anti Lag",
+    Name = "🧹 Anti-Lag Mode",
     Callback = function()
         local ws = game:GetService("Workspace")
         local lighting = game:GetService("Lighting")
+
         for _, v in pairs(ws:GetDescendants()) do
             if v:IsA("BasePart") then
                 v.Material = Enum.Material.SmoothPlastic
                 v.Reflectance = 0
                 v.CastShadow = false
-            end
-            if v:IsA("Decal") or v:IsA("Texture") or v:IsA("ParticleEmitter") or v:IsA("Fire") or v:IsA("Smoke") or v:IsA("Sparkles") then
+            elseif v:IsA("Decal") or v:IsA("Texture") or v:IsA("ParticleEmitter") or v:IsA("Fire") or v:IsA("Smoke") or v:IsA("Sparkles") then
                 v:Destroy()
-            end
-            if v:IsA("PointLight") or v:IsA("SurfaceLight") or v:IsA("SpotLight") then
+            elseif v:IsA("PointLight") or v:IsA("SurfaceLight") or v:IsA("SpotLight") then
                 v.Enabled = false
             end
         end
@@ -401,92 +316,18 @@ VisualTab:AddButton({
         lighting.FogEnd = 1e10
         lighting.Brightness = 0
         lighting.ClockTime = 14
-        lighting.EnvironmentDiffuseScale = 0
-        lighting.EnvironmentSpecularScale = 0
 
-        ws.Terrain.WaterWaveSize = 0
-        ws.Terrain.WaterWaveSpeed = 0
-        ws.Terrain.WaterReflectance = 0
-        ws.Terrain.WaterTransparency = 1
+        OrionLib:MakeNotification({
+            Name = "Anti-Lag Activated",
+            Content = "Performance optimized for low-end devices.",
+            Time = 4
+        })
     end
 })
 
--- Finder Tab
-local FinderTab = Window:MakeTab({
-    Name = "Finder",
-    Icon = "rbxassetid://6031071058",
-    PremiumOnly = false
+-- Done
+OrionLib:MakeNotification({
+    Name = "YoxanXHub Loaded",
+    Content = "Part 2/2 fully loaded! Have fun.",
+    Time = 3
 })
-
-FinderTab:AddButton({
-    Name = "Server Hop",
-    Callback = function()
-        game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
-    end
-})
-
-FinderTab:AddButton({
-    Name = "Try find a target in server hop",
-    Callback = function()
-        print("Warning")
-    end
-})
-
-FinderTab:AddButton({
-    Name = "Join Small Server",
-    Callback = function()
-        local HttpService = game:GetService("HttpService")
-        local TeleportService = game:GetService("TeleportService")
-        local Players = game:GetService("Players")
-        local function GetLowPlayerServer()
-            local jobIdAtual = game.JobId
-            local PlaceId = game.PlaceId
-            local Cursor = nil
-            local ListaFinal = {}
-
-            for _ = 1, 10 do
-                local url = "https://games.roblox.com/v1/games/"..PlaceId.."/servers/Public?sortOrder=Asc&limit=100"
-                if Cursor then url = url .. "&cursor=" .. Cursor end
-
-                local success, result = pcall(function()
-                    return HttpService:JSONDecode(game:HttpGet(url))
-                end)
-
-                if success and result and result.data then
-                    for _, server in pairs(result.data) do
-                        if server.playing < server.maxPlayers and server.id ~= jobIdAtual then
-                            table.insert(ListaFinal, server)
-                        end
-                    end
-                    Cursor = result.nextPageCursor
-                    if not Cursor then break end
-                else
-                    break
-                end
-            end
-
-            if #ListaFinal > 0 then
-                return ListaFinal[math.random(1, #ListaFinal)].id
-            else
-                return nil
-            end
-        end
-
-        local targetServer = GetLowPlayerServer()
-        if targetServer then
-            TeleportService:TeleportToPlaceInstance(game.PlaceId, targetServer, Players.LocalPlayer)
-        else
-            warn("Low players server Not found.")
-        end
-    end
-})
-
-FinderTab:AddButton({
-    Name = "Warning: Try best low server",
-    Callback = function()
-        print("Low Server")
-    end
-})
-
--- Finalize UI
-OrionLib:Init()
