@@ -6,7 +6,7 @@ pcall(function()
 end)
 
 local Gui = Instance.new("ScreenGui", CoreGui)
-Gui.Name = "ExampleUI"
+Gui.Name = "eUI"
 Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling"
 Gui.ResetOnSpawn = false
 
